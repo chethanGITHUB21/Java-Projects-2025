@@ -4,51 +4,21 @@ import java.util.Scanner;
 class Demo {
 
     public static void main(String[] args) {
-        Person std1 = new Person();
 
-        AuthSystem.Signin();
-        AuthSystem.Login();
+        try {
+            int num1 = 5;
+            int num2 = 6;
+            int num3 = 0;
+
+            float devide = num1 / num3;
+
+            System.out.println(devide);
+
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
+        }
 
     }
-}
-
-class Person {
-
-    Scanner sc = new Scanner(System.in);
-
-    String name;
-    int age;
-    String bank;
-    float accountBal;
-
-    // Method to update name and age
-    void write() {
-
-        System.out.print("Enter your name: ");
-        name = sc.nextLine();  // directly store in class variable
-
-        System.out.print("Enter your Bank name: ");
-        bank = sc.nextLine();
-
-        System.out.print("Enter your age: ");
-        age = sc.nextInt();
-
-        System.out.print("Enter Amount you want to save: ");
-        accountBal = sc.nextFloat();
-
-        System.out.println("Your details changed successfully!\n");
-    }
-
-    // Method to display the profile
-    void profile() {
-        System.out.println("======================================");
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Bank: " + bank);
-        System.out.println("Account Balance: " + accountBal);
-        System.out.println("======================================");
-    }
-
 }
 
 class AuthSystem {
@@ -59,28 +29,31 @@ class AuthSystem {
     public static void Signin() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the username: ");
+        System.out.println("Enter the username for sign-up: ");
         username = sc.nextLine();
 
-        System.out.println("Enter your password: ");
+        System.out.println("Enter your password for sign-up: ");
         userpass = sc.nextLine();
 
         System.out.println("Signup successful!\n");
     }
 
-    public static void Login() {
+    public static String Login() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the username: ");
+        System.out.println("Enter the username for login: ");
         String Lusername = sc.nextLine();
 
-        System.out.println("Enter your password: ");
+        System.out.println("Enter your password for login: ");
         String Luserpass = sc.nextLine();
 
         if (Lusername.equals(username) && Luserpass.equals(userpass)) {
             System.out.println("Login Success!");
+            return username;
         } else {
             System.out.println("Login Failed");
+
         }
+        return "null";
     }
 }

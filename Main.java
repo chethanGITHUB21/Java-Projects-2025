@@ -6,10 +6,13 @@ class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         AuthSystem.Signin();
-        String login = AuthSystem.Login();
 
-        if (login instanceof String) {
-            System.out.println("Task (1-5): \n"
+        AuthSystem authSys = new AuthSystem();
+
+        if (!authSys.Login()) {
+            System.out.println("Sorry User!. Your login credentials are not matching\nTry to Sign-up Again.");
+        } else {
+            System.out.println("Task (1-5)\n"
                     + "1. Check Balance\n"
                     + "2. Add User\n"
                     + "3. Cash Withdrawal\n"
@@ -21,7 +24,7 @@ class Main {
 
             Person user1 = new Person();
 
-            int PassCode = 2120;
+            int PassCode = AuthSystem.userpass;
 
             switch (tsk) {
 
@@ -95,44 +98,47 @@ class Main {
             }
 
         }
-
     }
+
 }
 
 class AuthSystem {
 
     static String username;
-    static String userpass;
+    static int userpass;
 
-    public static void Signin() {
+    public static Integer Signin() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the username for sign-up: ");
         username = sc.nextLine();
 
         System.out.println("Enter your password for sign-up: ");
-        userpass = sc.nextLine();
+        userpass = sc.nextInt();
 
         System.out.println("Signup successful!\n");
+        return userpass;
     }
 
-    public static String Login() {
+    public static Boolean Login() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the username for login: ");
         String Lusername = sc.nextLine();
 
         System.out.println("Enter your password for login: ");
-        String Luserpass = sc.nextLine();
+        int Luserpass = sc.nextInt();
 
-        if (Lusername.equals(username) && Luserpass.equals(userpass)) {
+        if (Lusername.equals(username) && Luserpass == userpass) {
             System.out.println("Login Success!");
-            return username;
+            return true;
+
         } else {
             System.out.println("Login Failed");
+            return false;
 
         }
-        return "null";
+
     }
 }
 
