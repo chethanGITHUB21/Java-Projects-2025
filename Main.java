@@ -54,7 +54,7 @@ class Main {
                             break;
 
                         } else {
-                            System.out.println("You entered the wrong Password: ");
+                            System.out.println("Sorry! Wrong Password!");
                         }
                     } while (pass == PassCode);
                     break;
@@ -81,7 +81,7 @@ class Main {
 
                         } while (newpass == confirmpass);
                     } else {
-                        System.out.println("Enter Password is in-correct");
+                        System.out.println("Sorry! Wrong Password!");
                     }
                     break;
                 case 5:
@@ -90,7 +90,8 @@ class Main {
 
                     if (passc == PassCode) {
                         user1.profile();
-
+                    } else {
+                        System.out.println("Sorry! Wrong Password!");
                     }
                 default:
                     sc.close();
